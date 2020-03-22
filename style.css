@@ -78,3 +78,14 @@ table td{
 .ScheduleTitle h1{
     text-align: center;
 }
+
+.btn-edit{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.col-12 {
+    margin:20px 0px;
+    line-height:100px;
+}
+
