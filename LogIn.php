@@ -17,7 +17,8 @@ session_start();
                 header('Location: http://192.168.33.10/AdjusTime/Schedule.php');
                 exit;
             }else{
-                echo "ユーザー名またはパスワードを見直してください。";
+                $alert = "<script type='text/javascript'>alert('ユーザー名またはパスワードを見直してください。');</script>";
+                echo $alert;
             }
         }catch(PDOException $e){
             echo $e->getMessage();
