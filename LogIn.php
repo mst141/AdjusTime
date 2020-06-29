@@ -1,7 +1,8 @@
 <?php
 session_start();
+
     //ログイン機能
-    if(isset($_POST['login'])){
+    if(!empty($_POST['username']) && ($_POST['password1'])){
         $username = $_POST['username'];
         $password = $_POST['password1'];
         try{
@@ -14,16 +15,23 @@ session_start();
             $db = null;
             //ホーム画面に遷移
             if($result[0] != 0){
-                header('Location: http://192.168.33.10/AdjusTime/Schedule.php');
+                $_SESSION['username'] = $_POST['username'];
+                $login_success_url = "Schedule.php";
+                header("Location: {$login_success_url}");
                 exit;
             }else{
-                $alert = "<script type='text/javascript'>alert('ユーザー名またはパスワードを見直してください。');</script>";
+                $alert = "<script type='text/javascript'>
+                alert('ユーザー名またはパスワードを見直してください。');</script>";
                 echo $alert;
             }
         }catch(PDOException $e){
             echo $e->getMessage();
             exit;
         }
+    }else{
+        $alert2 = "<script type='text/javascript'>
+        alert('ユーザー名またはパスワードを見直してください。');</script>";
+        echo $alert2;
     }
 ?>
 
@@ -33,7 +41,8 @@ session_start();
         <meta charset="utf-8">
         <title>AdjusTime</title>
         <link rel="stylesheet" href="./style.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
 <body>
 
@@ -44,7 +53,7 @@ session_start();
         <div class="LoginBox">
             <p>ログイン</p>
             <form action="" method="POST">
-                ユーザー名<br><input type="text" name="username" value="mst_141"><br>
+                ユーザー名<br><input type="text" name="username" value=""><br>
                 パスワード<br><input type="password" name="password1" value=""><br><br>
                 <input type="submit" class="btn-flat-border" name="login" value="SIGN IN">
             </form>
