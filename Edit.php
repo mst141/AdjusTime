@@ -1,5 +1,5 @@
 <?php
-    //CREATE_INFOを初期値に利用
+    //CREATE_INFOの中身を初期値に入れ込む
     $id = $_GET['id'];
     $db = new PDO('mysql:host=localhost;dbname=SCHEDULE','root','root');
     $sql = 'SELECT * FROM CREATE_INFO WHERE id = :id';
@@ -31,7 +31,8 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
 <div class="container">
@@ -72,7 +73,8 @@
                             <button type="button" class="btn btn-primary" onclick="history.back()">戻る</button>
                         </div>
                         <div class="input-group">
-                            <button type="submit" href="Schedule.php<? $result['id'] ?>" name="btnSend" class="btn btn-danger">決定</button>
+                            <button type="submit" href="Schedule.php<? $result['id'] ?>" 
+                            name="btnSend" class="btn btn-danger">決定</button>
                         </div>
                     </div>
                 </div>
