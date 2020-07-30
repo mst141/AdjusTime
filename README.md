@@ -2,7 +2,7 @@
 
 タイムスケジュール管理のデモアプリです。
 
-# 環境
+## 環境
 
 ・OS : CentOS7/VirtualBox/Vagrant
 
